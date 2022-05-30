@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Italy</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <style>
+    body {margin:0;}
+    body{
+      font-family: "Lato", sans-serif;
+    }
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .navbar a:hover {
+      background: #ddd;
+      color: black;
+    }
+
+    .main {
+      padding: 16px;
+      margin-top: 30px;
+      height: 1500px; /* Used in this example to enable scrolling */
+    }
+
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+      font-family: arial;
+           }
+
+    .price {
+      color: grey;
+      font-size: 13px;
+    }
+
+    .card button {
+      border: none;
+      outline: 0;
+      padding: 12px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    .card button:hover {
+      opacity: 0.7;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+
+
+    .dropbtn {
+      margin-left:30px;
+      font-size: 16px;
+      border: none;
+      color:black;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {background-color: #ddd;}
+
+    .dropdown:hover .dropdown-content {display: block;}
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a class="navbar-brand" href="#"><span style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776;</span></a>
+        <a class="navbar-brand" href="#" style ="font-size:20px;"><b>Daily News</b></a>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#" target="_blank"></a></li>
+            <!--<li><a href="#">Welcome</a></li>-->
+            <!--<li class="w3-xlarge" style="font-size:50px; color:white; text-decoration: none;"><a href="#" class="material-icons w3-xlarge" >home</a></li>-->
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+              <!--<li><a href="#" class="fa fa-bell" style="font-size:30px; margin-top:14px; color:white; text-decoration: none;"></a></li>-->
+              <li><a href="{% url 'Home_View'%}" class="fa fa-sign-in" style="font-size:30px; margin-top:6px; margin-right:30px; color:white; text-decoration: none;">Home</a></li>
+        </ul>
+    </div>
+
+    <center><div style="margin-top:7%;">
+        <center><h1 style="color:black;"><b>Daily News Update</b></h1></center>
+    </div></center>
+    <center><p><img src="data:image/jpeg;base64,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" style="height:30px; width:50px;">Italy</p></center>
+    <hr>
+    <div class="dropdown">
+  <a class="dropbtn">Business Headlines</a>
+  <div class="dropdown-content">
+    <a href="{% url 'Apple_View'%}">Apple</a>
+    <a href="{% url 'Tesla_View'%}">Tesla</a>
+  </div>
+</div>
+     <div class="dropdown">
+  <a class="dropbtn">World News</a>
+  <div class="dropdown-content">
+    <a href="{% url 'Argentina_View'%}">Argentina</a>
+    <a href="{% url 'Australia_View'%}">Australia</a>
+    <a href="{% url 'Austria_View'%}">Austria</a>
+    <a href="{% url 'Belgium_View'%}">Belgium</a>
+    <a href="{% url 'Brazil_View'%}">Brazil</a>
+    <a href="{% url 'Bulgaria_View'%}">Bulgaria</a>
+    <a href="{% url 'Canada_View'%}">Canada</a>
+    <a href="{% url 'China_View'%}">China</a>
+    <a href="{% url 'Colombia_View'%}">Colombia</a>
+    <a href="{% url 'Cuba_View'%}">Cuba</a>
+    <a href="{% url 'Czech_Republic_View'%}">Czech Republic</a>
+    <a href="{% url 'Egypt_View'%}">Egypt</a>
+    <a href="{% url 'France_View'%}">France</a>
+    <a href="{% url 'Germany_View'%}">Germany</a>
+    <a href="{% url 'Greece_View'%}">Greece</a>
+    <a href="{% url 'Hong_Kong_View'%}">Hong Kong</a>
+    <a href="{% url 'Hungary_View'%}">Hungary</a>
+    <a href="{% url 'Indonesia_View'%}">Indonesia</a>
+    <a href="{% url 'Ireland_View'%}">Ireland</a>
+    <a href="{% url 'Israel_View'%}">Israel</a>
+    <a href="{% url 'Italy_View'%}">Italy</a>
+    <a href="{% url 'Japan_View'%}">Japan</a>
+    <a href="{% url 'Latvia_View'%}">Latvia</a>
+    <a href="{% url 'Malaysia_View'%}">Malaysia</a>
+    <a href="{% url 'Mexico_View'%}">Mexico</a>
+    <a href="{% url 'Morocco_View'%}">Morocco</a>
+    <a href="{% url 'Netherland_View'%}">Netherland</a>
+    <a href="{% url 'New_Zealand_View'%}">New Zealand</a>
+  </div>
+</div>
+    <a href="{% url 'Tech_Crunch_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Technical News</a>
+    <a href="{% url 'Latest_News_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Latest Update</a>
+    <a href="{% url 'India_News_View'%}" style="color:black; margin-left:20px; font-size: 16px;">India Headlines</a>
+    <a href="{% url 'India_Business_View'%}" style="color:black; margin-left:20px; font-size: 16px;">India Business</a>
+    <a href="{% url 'India_Health_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Health</a>
+    <a href="{% url 'India_Science_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Science</a>
+    <a href="{% url 'India_Sports_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Sports</a>
+    <a href="{% url 'India_Technology_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Technology</a>
+    <a href="{% url 'India_Entertainment_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Entertainment</a>
+
+    <hr style="height:2px;border-width:6;color:gray;background-color:black">
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div>
+       {% for x in api.articles %}
+        <div class="card" style="margin-top:6%; margin-left:10px; float:left; width:250px;">
+          <img src="{{x.urlToImage}}" alt="{{x.source.name}}" style="width:150px; height:150px;">
+            <video width="150" height="100" controls>
+                <source src="{{x.url}}" type="video/mp4">
+            </video>
+          <p>{{x.title}}</p>
+          <p class="price">{{x.description|truncatechars:40}}</p>
+          <a href="{{x.url}}" target="_blank">Read More</a>
+        </div>
+        {% endfor %}
+   </div>
+
+
+    <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
+
+    <!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

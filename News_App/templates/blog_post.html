@@ -1,0 +1,102 @@
+{% load static %}
+<html>
+<head>
+<title>BlogPost</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<style>
+
+
+	</style>
+	</head>
+<body background="https://images.unsplash.com/photo-1520262389826-d559a9aca921?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60">
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand text-danger" href="#" style="font-weight:bold;">WEB<span class="text-white" style="font-weight:bold;">DEVELOPMENT</span></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+  <!-- Links -->
+  <ul class="navbar-nav" style="margin-left:200px;">
+    <li class="nav-item">
+      <a class="nav-link text-white " href="{%url 'index'%}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="#">Contact</a>
+    </li>
+	<li class="nav-item">
+      <a class="nav-link text-white" href="{%url 'Login_View'%}">Login</a>
+    </li>
+	<li class="nav-item">
+      <a class="nav-link text-white" href="{%url 'Registration_View'%}">Register</a>
+    </li>
+	<li class="nav-item">
+      <a class="nav-link text-white" href="#">Products</a>
+    </li>
+
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown" style="margin-right:20px;">Menu
+      </a>
+      <div class="dropdown-menu bg-secondary">
+        <a class="dropdown-item text-warning" href="fastfood.html">Fast Food</a>
+        <a class="dropdown-item text-warning" href="#">Pizza</a>
+        <a class="dropdown-item text-warning" href="#">Ice-creams</a>
+		<a class="dropdown-item text-warning" href="#">Cakes</a>
+      </div>
+    </li>
+	<form class="form-inline" action="/action_page.php">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+    <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search"><span style="font-size:20px;">  Search</span></span></button>
+  </form>
+  </ul>
+
+  </div>
+
+</nav>
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert dismissible fade show" role="alert">
+
+  <strong>Message</strong>{{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+<h2 class="container text-primary">Post your Blog Here..</h2>
+<div class="container bg-dark">
+<form action="" method="POST">
+  {% csrf_token %}
+  <div class="form-group text-white mt-5">
+    <label for="exampleFormControlInput1">Title</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title of Blog" name="title">
+  </div>
+
+
+  <div class="form-group text-white">
+    <label for="exampleFormControlTextarea1">Cont</label>
+    <textarea class="form-control mb-5" id="exampleFormControlTextarea1" placeholder="Blog Content...." rows="3" name="content"></textarea>
+  </div>
+  <input type="submit" class="btn btn-primary mb-5 ml-5" value="POST">
+</form>
+</div>
+</body>
+</html>

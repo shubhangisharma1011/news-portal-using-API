@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Egypt</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <style>
+    body {margin:0;}
+    body{
+      font-family: "Lato", sans-serif;
+    }
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .navbar a:hover {
+      background: #ddd;
+      color: black;
+    }
+
+    .main {
+      padding: 16px;
+      margin-top: 30px;
+      height: 1500px; /* Used in this example to enable scrolling */
+    }
+
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+      font-family: arial;
+           }
+
+    .price {
+      color: grey;
+      font-size: 13px;
+    }
+
+    .card button {
+      border: none;
+      outline: 0;
+      padding: 12px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    .card button:hover {
+      opacity: 0.7;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+
+
+    .dropbtn {
+      margin-left:30px;
+      font-size: 16px;
+      border: none;
+      color:black;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {background-color: #ddd;}
+
+    .dropdown:hover .dropdown-content {display: block;}
+
+    </style>
+</head>
+<body>
+    {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert dismissible fade show" role="alert">
+          <strong>Message</strong>{{message}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+    {% endfor %}
+
+    <div class="navbar">
+        <a class="navbar-brand" href="#"><span style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776;</span></a>
+        <a class="navbar-brand" href="#" style ="font-size:20px;"><b>Daily News</b></a>
+        <a href="#" style="color:white;">{{request.user.first_name}}&nbsp&nbsp{{request.user.last_name}}</a>
+        <a href="{% url 'Home_View'%}" style="color:white; margin-left:60%;">Home</a>
+        <ul class="nav navbar-nav">
+        </ul>
+    </div>
+
+    <center><div style="margin-top:7%;">
+        <center><h1 style="color:black;"><b>Daily News Update</b></h1></center>
+    </div></center>
+    <center><p><img src="data:image/png;base64,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" style="height:30px; width:50px;">Egypt</p></center>
+    <hr>
+    <div class="dropdown">
+  <a class="dropbtn">Business Headlines</a>
+  <div class="dropdown-content">
+    <a href="{% url 'Apple_View'%}">Apple</a>
+    <a href="{% url 'Tesla_View'%}">Tesla</a>
+  </div>
+</div>
+     <div class="dropdown">
+  <a class="dropbtn">World News</a>
+  <div class="dropdown-content">
+    <a href="{% url 'Argentina_View'%}">Argentina</a>
+    <a href="{% url 'Australia_View'%}">Australia</a>
+    <a href="{% url 'Austria_View'%}">Austria</a>
+    <a href="{% url 'Belgium_View'%}">Belgium</a>
+    <a href="{% url 'Brazil_View'%}">Brazil</a>
+    <a href="{% url 'Bulgaria_View'%}">Bulgaria</a>
+    <a href="{% url 'Canada_View'%}">Canada</a>
+    <a href="{% url 'China_View'%}">China</a>
+    <a href="{% url 'Colombia_View'%}">Colombia</a>
+    <a href="{% url 'Cuba_View'%}">Cuba</a>
+    <a href="{% url 'Czech_Republic_View'%}">Czech Republic</a>
+    <a href="{% url 'Egypt_View'%}">Egypt</a>
+    <a href="{% url 'France_View'%}">France</a>
+    <a href="{% url 'Germany_View'%}">Germany</a>
+    <a href="{% url 'Greece_View'%}">Greece</a>
+    <a href="{% url 'Hong_Kong_View'%}">Hong Kong</a>
+    <a href="{% url 'Hungary_View'%}">Hungary</a>
+    <a href="{% url 'Indonesia_View'%}">Indonesia</a>
+    <a href="{% url 'Ireland_View'%}">Ireland</a>
+    <a href="{% url 'Israel_View'%}">Israel</a>
+    <a href="{% url 'Italy_View'%}">Italy</a>
+    <a href="{% url 'Japan_View'%}">Japan</a>
+    <a href="{% url 'Latvia_View'%}">Latvia</a>
+    <a href="{% url 'Malaysia_View'%}">Malaysia</a>
+    <a href="{% url 'Mexico_View'%}">Mexico</a>
+    <a href="{% url 'Morocco_View'%}">Morocco</a>
+    <a href="{% url 'Netherland_View'%}">Netherland</a>
+    <a href="{% url 'New_Zealand_View'%}">New Zealand</a>
+  </div>
+</div>
+    <a href="{% url 'Tech_Crunch_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Technical News</a>
+    <a href="{% url 'Latest_News_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Latest Update</a>
+    <a href="{% url 'India_News_View'%}" style="color:black; margin-left:20px; font-size: 16px;">India Headlines</a>
+    <a href="{% url 'India_Business_View'%}" style="color:black; margin-left:20px; font-size: 16px;">India Business</a>
+    <a href="{% url 'India_Health_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Health</a>
+    <a href="{% url 'India_Science_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Science</a>
+    <a href="{% url 'India_Sports_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Sports</a>
+    <a href="{% url 'India_Technology_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Technology</a>
+    <a href="{% url 'India_Entertainment_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Entertainment</a>
+
+    <hr style="height:2px;border-width:6;color:gray;background-color:black">
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+       {% for x in api.articles %}
+        <div class="col-sm">
+        <div class="card" style="margin-top:6%; margin-left:10px; float:left; width:250px;">
+          <img src="{{x.urlToImage}}" alt="{{x.source.name}}" style="width:150px; height:150px;">
+            <video width="150" height="100" controls>
+                <source src="{{x.url}}" type="video/mp4">
+            </video>
+          <p>{{x.title}}</p>
+          <p class="price">{{x.description|truncatechars:40}}</p>
+          <a href="{{x.url}}" target="_blank">Read More</a>
+        </div>
+        </div>
+            <br>
+        {% endfor %}
+   </div>
+   </div>
+    <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
+    <footer>
+        <center> <hr style="height:2px; width:100%; background-color:grey; color:white;"><p style="background-color:black; color:white; margin-top:0; padding-top:10px;">Daily Updates<br>
+            <a href="#" style="color:white;">&copy; Copyright 2021 <br>All right Reserverd</a></p><hr style="height:2px; width:100%; background-color:grey; color:white;"></center>
+    </footer>
+
+    <!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

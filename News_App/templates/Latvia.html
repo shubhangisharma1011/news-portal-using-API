@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Lavita</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <style>
+    body {margin:0;}
+    body{
+      font-family: "Lato", sans-serif;
+    }
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .navbar a:hover {
+      background: #ddd;
+      color: black;
+    }
+
+    .main {
+      padding: 16px;
+      margin-top: 30px;
+      height: 1500px; /* Used in this example to enable scrolling */
+    }
+
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+      font-family: arial;
+           }
+
+    .price {
+      color: grey;
+      font-size: 13px;
+    }
+
+    .card button {
+      border: none;
+      outline: 0;
+      padding: 12px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    .card button:hover {
+      opacity: 0.7;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+
+
+    .dropbtn {
+      margin-left:30px;
+      font-size: 16px;
+      border: none;
+      color:black;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {background-color: #ddd;}
+
+    .dropdown:hover .dropdown-content {display: block;}
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a class="navbar-brand" href="#"><span style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776;</span></a>
+        <a class="navbar-brand" href="#" style ="font-size:20px;"><b>Daily News</b></a>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#" target="_blank"></a></li>
+            <!--<li><a href="#">Welcome</a></li>-->
+            <!--<li class="w3-xlarge" style="font-size:50px; color:white; text-decoration: none;"><a href="#" class="material-icons w3-xlarge" >home</a></li>-->
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+              <!--<li><a href="#" class="fa fa-bell" style="font-size:30px; margin-top:14px; color:white; text-decoration: none;"></a></li>-->
+              <li><a href="{% url 'Home_View'%}" class="fa fa-sign-in" style="font-size:30px; margin-top:6px; margin-right:30px; color:white; text-decoration: none;">Home</a></li>
+        </ul>
+    </div>
+
+    <center><div style="margin-top:7%;">
+        <center><h1 style="color:black;"><b>Daily News Update</b></h1></center>
+    </div></center>
+    <center><p><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMSEhUTExIVFRUVFxUVFxUVFRUVFxUXFRUXFxUVFxUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OFxAPGi0dHR0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIALcBFAMBIgACEQEDEQH/xAAcAAADAQADAQEAAAAAAAAAAAABAgMABAYHCAX/xAA8EAACAQEDCQQJAgUFAAAAAAAAAQIRAwSTBQYSITFBYdHSB1FTVBMWcYGRobHB8BczFCM0Q4MyYqLC8f/EABgBAQEBAQEAAAAAAAAAAAAAAAABAgME/8QAIREBAQACAgICAwEAAAAAAAAAAAECERJRBBMDFCFSkUH/2gAMAwEAAhEDEQA/APGmKmMLQy9VMmViTiikURvEY7SsULFFYh0xjIokJEqkR1xhoodRGh7CkYkdZEoorCNdw8IlFENzEsbMdR10KQiUjENzFJWYVDgXjZjxSDXFx/RDej+RdQMtTo6cFXW+8i8UHZCOBzBJRQLi4koEpQObaRISRWbi40rMRwOU0SYYuLi2kCeicqS9xKaDncXHaEaLtCSiVixBoRoq0IyuVibEY7EYc6VsScR2BhizaaRh2jFZ0ADVAC08SsSMWViRvFaJRInArEjviMVrLwROLKIjpiqvcPrJJ0LQkHWHii6dFyJxkiiDpDrYUQkUUgiNRRBQEUguNQ2KQdE1CTmFHR9nu/NoGaUxZsInaIlQsycwxUpSElwKSgTkys0jJzRRk5MMVCSJyKzIzYcqmycikibK51NiNjsWRXGkYDSF0gxsTACEKgMKMyoMSkCcSsQ1irEqiMWVqR3xPop7qlYEosomSukWgyyIRLRZHWKQLxIWVd/y7ikA6RXSUVrdPbUsmQjLgUiG4tGVClSUB3IjZ6a6it/neKnUdoBVGgs0maU0nSq0u6uv4Cze8ISS1iNFW0Skys1NMSZSSJzDNSEkx2Skg51OZKUSkmTkw51JiSGkBmnKpsRjyEbDnSMRoZisOdAIDFRkFioZBAiWiRSKxFXFWKKJkkURHeKIeEO/WJEqiV0iiktxWBGBWJHWLadB4MikOqhuVyIyotY6kQTKRDcq1RoklIpGRGopGGoOwn6QZzDTSVKuir301hm9WzuE068PaZuoQk0u4k2VmTkwzSORJspqIqXft+PwKxaW0lqEGc1uJcahi0s2SaKyjxJyQc6nJiMeROSK50kibHaEZXLIjFYzFYc6UxjFZEZI9vhm9cqa7tYa9n8uHIvY5s3NbbrYYcORdMT5HhI8T2/1dudf6Wxwocikc3rl5Wwwo8iaWfLHh8ZFY8T2+xzXubdVdbD32UKfQ50M2bl5O79zfoochpueRJ/jwaJRJHvUM17lvul3wobPhtLQzXuXkrvhQ5E41ueVj08CSZWCPfYZq3F6/wCCu+FDkUWalx8nd8GHIca1PLx6eBFYs97Watx33K74UORVZp3HyV3wYchxrU83Hp4AmUjQ979U7j5K74MOQ3qpcfJXfBhyHFqedj1Xgioh9I959Urj5K74UOQyzUuO3+Cu6/w2fSOK/fw6rwZcTSdD3r1VuPkrvgw5GWbFw2fwd3wbPkOK/fw6rwNs1dZ756qXHyV3wbPkb1VuPkrvgw5Din38Oq+f5JNr/byBI+gvVW4eSu+DDkL6qXDyV3wbPkOKfew6r56kRkj6Keadx8ldsGHIjPNS4+Tu2DZ8hxS+bh1XzvN7ibPoeeadx8nd8Gz5CyzTuPk7vgwX2HGsXy8enzxQDZ9C+qdy8nd8GHIV5q3Hyd3wochxT7WPT53mIz6GnmrcfJ3fChyEea1x8nd8KHIumL5M6fPEhGfQks17j5O74UOROebFy8nd8KHIaZvzzp8+MVnvtpm1cvJ2GFDkca0zbuflLBf44ci6Yvyx4SY9snkC5J/0tjhx5AGmfY/Vs9RybKa7zjKJyLOlUyuZGvdwORdkQe05Vlw4AWimtj+X0OVZWr2fbZ7yUJF7JgWsorcjkJcaHHiUs5AcmzjTiGK3t6xI2gzYDvYXgzjItFgPWozkltYlA19nw+IFQ1ERtQDNAbRtJA9Gt4AfAatDOKQrmuIBcjRkSnMyknuArpE3r/PpUnK17l8zK0AW8J0dG1xWtqu/WqE5L2/F/nuHnIjJ6gHZKcqbfuJC0TSaerdTmFyARyROQZOu76biUm3voAJyIWn1+HwLT2EZMDj2n5qOLaKpyLStO5795CX5/wCgSjB8DHHm5ptKLa79v3MA85axrN6+B1n15uXjPCtProhWfVx8WXs9Hacguq7UmcqykdQWfdxp+7LCtOkrDP24+NLCtekGq7nA5EJHS7PtBuK/vSwrXpORHtEyf40sK16RteOXTuFnKpWEtZ06HaDk7x5YVt9ol49oeTvHlg23QTcXhl07fFlE+86d+ouTV/elg23SOu0fJ3jSwbbpG4evPqu4p/lRoy1nTv1Iyd40sG26Ax7R8nePLBtugbh68+q7m7Q0WdNl2kZO8eWDbdA0e0nJ3jywbbpG4erPqu4KdBIWj/1SSS7t51T9SMnePLBtukP6j5O3W8sG26RuL6s/1v8AHbpPXtoGPBnTodpGTlX+fPBtugNn2j5OWy1kl3ehtugbh6s/1v8AHbbRJ7fq181rElKmzYdUfaTk/wAaWDbdIj7RsneNLBtukbh6s/1v8du0q6t35vJyktdNT3PbTjR6jqb7SMnePLBtuknado+TvGlhWy/6jcT159V3NL8e80mdNj2jZP8AGlg23SCXaTk+v78sK26RuHrz6rtzZOUvadW/UnJ/jywbbpJPtFyf48sG26BuHry6ds0tVGTrQ6t+oeTvHlg22v8A4k5doeT6/vywrbpG4evLp2yXuJSnxodWfaHk/wAeWFa9JJ9oWT/GlhWvSNpwy6dpk+P3OLCyUa0bddtW3r76bF7jrz7Q7h40sK16SUu0C4eNLCtekuzjenYrR1OPaWirTedfef1xr+88K16TjvPm5NuttLamv5Vr0hNV2Nr3fIJ16OfVw8aWFa9JgarxwNDJBMu7IdCIZBqHTHjxJoYjcVTGRIdB0lUQ1SSY0Q1KohkJpBUg2rQyYiYXNIjW1ExkyHpWPELKaoG+IH7QAGuoItQhGbFaBJg0iptqGYKgqEZiORmxGGLRbBUWoKhi0WxWwiMM1hWFisM0GAICs1jGoYIxggAIUCoGFUGTEiNUjcNUaIgahZVKjJkxlINynTGqRlaAUwvJyNMSb37aflSakNGYOWzw4lYslFh0iNS6U0gNiaQGF2dWgakFHWOqhJlTORnMVmoD8jUVsRRfeNUrOwA2Zk3HiGbRqZimQZCTBUzEqVi0wGZAAxkAzDI0MLRmAaoAGBsUwihBswUJUNQ1s1AwYqYUQ2qkEnFhbDe2kzRQDNhNmkzRYgUwbPU1Ram0gu1dMDnrJpmC8lIyG0iKZtIEyW0zaZFyNpA5qOQrmI2LUJcldIRzFbFqGbkfSGTJIbSBKNQNGqaoChBomoVkGzBBQIBhqGBpOpqgQaBgamqAwUxgIzYUxqi1MDamkHaSqGoXagBVIbSC7EyBpAYVRsFRENUGxqaopgGbAYzYGqaoGYDVM2BsASsYwGwjINQACGTDUUDYXZqmqCLBJhNiEFQAPUwhguxiqGMYAMyiYwSQVAVoxgWfgyjxMqGMAGwVMYM7E1TGCtUZmMGoFQpmMEgmCYNsYxgFbMYwZYxjABmoYwQdE2iYwa0EkaEGYwTiMqIPo29nzCYNYyW2A7AdWHExibbxwgehMYwOEf/Z" style="height:30px; width:50px;">Lavita</p></center>
+    <hr>
+    <div class="dropdown">
+  <a class="dropbtn">Business Headlines</a>
+  <div class="dropdown-content">
+    <a href="{% url 'Apple_View'%}">Apple</a>
+    <a href="{% url 'Tesla_View'%}">Tesla</a>
+  </div>
+</div>
+     <div class="dropdown">
+  <a class="dropbtn">World News</a>
+  <div class="dropdown-content">
+    <a href="{% url 'Argentina_View'%}">Argentina</a>
+    <a href="{% url 'Australia_View'%}">Australia</a>
+    <a href="{% url 'Austria_View'%}">Austria</a>
+    <a href="{% url 'Belgium_View'%}">Belgium</a>
+    <a href="{% url 'Brazil_View'%}">Brazil</a>
+    <a href="{% url 'Bulgaria_View'%}">Bulgaria</a>
+    <a href="{% url 'Canada_View'%}">Canada</a>
+    <a href="{% url 'China_View'%}">China</a>
+    <a href="{% url 'Colombia_View'%}">Colombia</a>
+    <a href="{% url 'Cuba_View'%}">Cuba</a>
+    <a href="{% url 'Czech_Republic_View'%}">Czech Republic</a>
+    <a href="{% url 'Egypt_View'%}">Egypt</a>
+    <a href="{% url 'France_View'%}">France</a>
+    <a href="{% url 'Germany_View'%}">Germany</a>
+    <a href="{% url 'Greece_View'%}">Greece</a>
+    <a href="{% url 'Hong_Kong_View'%}">Hong Kong</a>
+    <a href="{% url 'Hungary_View'%}">Hungary</a>
+    <a href="{% url 'Indonesia_View'%}">Indonesia</a>
+    <a href="{% url 'Ireland_View'%}">Ireland</a>
+    <a href="{% url 'Israel_View'%}">Israel</a>
+    <a href="{% url 'Italy_View'%}">Italy</a>
+    <a href="{% url 'Japan_View'%}">Japan</a>
+    <a href="{% url 'Latvia_View'%}">Latvia</a>
+    <a href="{% url 'Malaysia_View'%}">Malaysia</a>
+    <a href="{% url 'Mexico_View'%}">Mexico</a>
+    <a href="{% url 'Morocco_View'%}">Morocco</a>
+    <a href="{% url 'Netherland_View'%}">Netherland</a>
+    <a href="{% url 'New_Zealand_View'%}">New Zealand</a>
+  </div>
+</div>
+    <a href="{% url 'Tech_Crunch_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Technical News</a>
+    <a href="{% url 'Latest_News_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Latest Update</a>
+    <a href="{% url 'India_News_View'%}" style="color:black; margin-left:20px; font-size: 16px;">India Headlines</a>
+    <a href="{% url 'India_Business_View'%}" style="color:black; margin-left:20px; font-size: 16px;">India Business</a>
+    <a href="{% url 'India_Health_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Health</a>
+    <a href="{% url 'India_Science_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Science</a>
+    <a href="{% url 'India_Sports_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Sports</a>
+    <a href="{% url 'India_Technology_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Technology</a>
+    <a href="{% url 'India_Entertainment_View'%}" style="color:black; margin-left:20px; font-size: 16px;">Entertainment</a>
+
+    <hr style="height:2px;border-width:6;color:gray;background-color:black">
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div>
+       {% for x in api.articles %}
+        <div class="card" style="margin-top:6%; margin-left:10px; float:left; width:250px;">
+          <img src="{{x.urlToImage}}" alt="{{x.source.name}}" style="width:150px; height:150px;">
+            <video width="150" height="100" controls>
+                <source src="{{x.url}}" type="video/mp4">
+            </video>
+          <p>{{x.title}}</p>
+          <p class="price">{{x.description|truncatechars:40}}</p>
+          <a href="{{x.url}}" target="_blank">Read More</a>
+        </div>
+        {% endfor %}
+   </div>
+
+
+    <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
+
+    <!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
